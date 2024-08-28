@@ -1,8 +1,6 @@
 package com.sparta.schedulemanager_extension.entity;
 
-import com.sparta.schedulemanager_extension.utility.DateUtility;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -26,12 +24,12 @@ public class Schedule extends BaseEntity {
     private String scheduleData;
 
     @Column(name = "manager_name", nullable = false, length = 20)
-    private String manegerName;
+    private String managerName;
 
     public Schedule(String scheduleTitle, String scheduleData, String managerName) {
         this.scheduleTitle = scheduleTitle;
         this.scheduleData = scheduleData;
-        this.manegerName = managerName;
+        this.managerName = managerName;
     }
 
     public void updateSchedule(String scheduleTitle, String scheduleData) {

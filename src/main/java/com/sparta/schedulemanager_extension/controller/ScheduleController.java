@@ -1,8 +1,8 @@
 package com.sparta.schedulemanager_extension.controller;
 
-import com.sparta.schedulemanager_extension.dto.ScheduleBaseRequestDto;
-import com.sparta.schedulemanager_extension.dto.ScheduleCreateRequestDto;
-import com.sparta.schedulemanager_extension.dto.ScheduleResponseDto;
+import com.sparta.schedulemanager_extension.dto.schedule.ScheduleBaseRequestDto;
+import com.sparta.schedulemanager_extension.dto.schedule.ScheduleCreateRequestDto;
+import com.sparta.schedulemanager_extension.dto.schedule.ScheduleResponseDto;
 import com.sparta.schedulemanager_extension.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 

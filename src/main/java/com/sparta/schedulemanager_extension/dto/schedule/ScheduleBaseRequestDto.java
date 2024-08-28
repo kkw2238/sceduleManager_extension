@@ -1,4 +1,4 @@
-package com.sparta.schedulemanager_extension.dto;
+package com.sparta.schedulemanager_extension.dto.schedule;
 
 import com.sparta.schedulemanager_extension.entity.Schedule;
 import lombok.Getter;

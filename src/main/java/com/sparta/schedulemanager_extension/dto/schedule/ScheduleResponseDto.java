@@ -1,4 +1,4 @@
-package com.sparta.schedulemanager_extension.dto;
+package com.sparta.schedulemanager_extension.dto.schedule;
 
 import com.sparta.schedulemanager_extension.entity.Schedule;
 import lombok.Getter;
@@ -20,6 +20,6 @@ public class ScheduleResponseDto {
         this.scheduleData = schedule.getScheduleData();
         this.createDateTime = schedule.getCreateDateTime();
         this.editDateTime = schedule.getEditDateTime();
-        this.managerName = schedule.getManegerName();
+        this.managerName = schedule.getManagerName();
     }
 }

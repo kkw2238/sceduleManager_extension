@@ -1,8 +1,8 @@
 package com.sparta.schedulemanager_extension.service;
 
-import com.sparta.schedulemanager_extension.dto.ScheduleBaseRequestDto;
-import com.sparta.schedulemanager_extension.dto.ScheduleCreateRequestDto;
-import com.sparta.schedulemanager_extension.dto.ScheduleResponseDto;
+import com.sparta.schedulemanager_extension.dto.schedule.ScheduleBaseRequestDto;
+import com.sparta.schedulemanager_extension.dto.schedule.ScheduleCreateRequestDto;
+import com.sparta.schedulemanager_extension.dto.schedule.ScheduleResponseDto;
 import com.sparta.schedulemanager_extension.entity.Schedule;
 import com.sparta.schedulemanager_extension.repository.ScheduleRepository;
 import org.springframework.stereotype.Component;
