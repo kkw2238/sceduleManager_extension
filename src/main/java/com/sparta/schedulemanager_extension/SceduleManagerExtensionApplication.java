@@ -1,8 +1,10 @@
-package com.sparta.scedulemanager_extension;
+package com.sparta.schedulemanager_extension;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+@EnableJpaAuditing
 @SpringBootApplication
 public class SceduleManagerExtensionApplication {
 

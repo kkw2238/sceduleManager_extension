@@ -1,4 +1,4 @@
-package com.sparta.scedulemanager_extension;
+package com.sparta.schedulemanager_extension;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

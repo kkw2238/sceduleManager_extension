@@ -1,0 +1,41 @@
+package com.sparta.schedulemanager_extension.entity;
+
+import com.sparta.schedulemanager_extension.utility.DateUtility;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Entity
+@Getter
+@NoArgsConstructor
+@Table(name = "schedule")
+@EntityListeners(AuditingEntityListener.class)
+public class Schedule extends BaseEntity {
+
+    @Id
+    @Column(name = "schedule_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "schedule_title", nullable = false, length = 20)
+    private String scheduleTitle;
+
+    @Column(name = "schedule_data", nullable = false, length = 100)
+    private String scheduleData;
+
+    @Column(name = "manager_name", nullable = false, length = 20)
+    private String manegerName;
+
+    public Schedule(String scheduleTitle, String scheduleData, String managerName) {
+        this.scheduleTitle = scheduleTitle;
+        this.scheduleData = scheduleData;
+        this.manegerName = managerName;
+    }
+
+    public void updateSchedule(String scheduleTitle, String scheduleData) {
+        this.scheduleTitle = scheduleTitle;
+        this.scheduleData = scheduleData;
+    }
+}

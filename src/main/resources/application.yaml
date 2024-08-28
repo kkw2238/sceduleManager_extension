@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: scheduleManager_extension
+  profiles:
+    active: local
