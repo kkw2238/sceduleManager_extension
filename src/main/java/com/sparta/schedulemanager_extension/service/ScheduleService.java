@@ -2,17 +2,25 @@ package com.sparta.schedulemanager_extension.service;
 
 import com.sparta.schedulemanager_extension.dto.schedule.ScheduleBaseRequestDto;
 import com.sparta.schedulemanager_extension.dto.schedule.ScheduleCreateRequestDto;
+import com.sparta.schedulemanager_extension.dto.schedule.SchedulePageResponseDto;
 import com.sparta.schedulemanager_extension.dto.schedule.ScheduleResponseDto;
 import com.sparta.schedulemanager_extension.entity.Schedule;
+import com.sparta.schedulemanager_extension.repository.CommentRepository;
 import com.sparta.schedulemanager_extension.repository.ScheduleRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ScheduleService {
 
-    ScheduleRepository scheduleRepository;
+    final ScheduleRepository scheduleRepository;
+    final CommentRepository commentRepository;
 
-    public ScheduleService(ScheduleRepository scheduleRepository) {
+    public ScheduleService(ScheduleRepository scheduleRepository, CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
         this.scheduleRepository = scheduleRepository;
     }
 
@@ -36,6 +44,32 @@ public class ScheduleService {
                 new RuntimeException("Schedule not found"));
 
         return new ScheduleResponseDto(schedule);
+    }
+
+    /**
+     * @param pageIndex 페이징 할 인덱스
+     * @param pageSize 페이징 사이즈
+     * @return 조회 & 댓글 수까지 추가된 객체
+     */
+    public List<SchedulePageResponseDto> getPageSchedules(Integer pageIndex, Integer pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageIndex, pageSize, Sort.by("editDateTime").descending());
+        List<SchedulePageResponseDto> schedules = scheduleRepository.findAll(pageRequest).stream()
+                .map(SchedulePageResponseDto::new)
+                .toList();
+
+        for (SchedulePageResponseDto schedule : schedules) {
+            schedule.setCommentCount(getCommentCount(schedule.getScheduleID()));
+        }
+
+        return schedules;
+    }
+
+    /**
+     * @param scheduleId 해당 스케쥴에 존재하는 댓글 수를 반환하는 함수
+     * @return 해당 스케쥴에 존재하는 댓글 수
+     */
+    public int getCommentCount(int scheduleId) {
+        return commentRepository.findBySchedule_Id(scheduleId).size();
     }
 
     /**
