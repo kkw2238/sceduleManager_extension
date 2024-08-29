@@ -27,7 +27,8 @@ public class ScheduleController {
         return scheduleService.createSchedule(scheduleCreateRequestDto);
     }
 
-    /**
+    /** scheduleId에 해당하는 schedule을 조회하는 함수
+     *
      * @param scheduleId 조회하고자 하는 스케쥴 ID
      * @return 조회된 스케쥴 내용이 담긴 객체
      */
@@ -36,7 +37,8 @@ public class ScheduleController {
         return scheduleService.getSchedule(scheduleId);
     }
 
-    /**
+    /** 모든 스케쥴에 대해 페이징한 결과를 반환하는 함수
+     *
      * @param page 페이징 할 인덱스
      * @param size 페이징 사이즈 Default : 10개
      * @return 조회 & 댓글 수까지 추가된 객체
@@ -48,7 +50,8 @@ public class ScheduleController {
 
         return scheduleService.getPageSchedules(page, size);
     }
-    /**
+    /** schedule Id에 해당하는 스케쥴을 업데이트 하는 함수
+     *
      * @param scheduleId 갱신하고자 하는 스케쥴 ID
      * @param scheduleBaseRequestDto 갱신할 내용이 담긴 RequestBody
      * @return 갱신후 스케쥴 내용이 담긴 객체
@@ -56,5 +59,15 @@ public class ScheduleController {
     @PutMapping("/schedules/{scheduleId}")
     public ScheduleResponseDto updateSchedule(@PathVariable Integer scheduleId, @RequestBody ScheduleBaseRequestDto scheduleBaseRequestDto) {
         return scheduleService.updateSchedule(scheduleId, scheduleBaseRequestDto);
+    }
+
+    /** schedule ID에 해당하는 스케쥴을 삭제하는 함수
+     *
+     * @param scheduleId 삭제하고자 하는 스케쥴 ID
+     * @return 삭제된 스케쥴 ID
+     */
+    @DeleteMapping("/schedules/{scheduleId}")
+    public Integer deleteSchedule(@PathVariable Integer scheduleId) {
+        return scheduleService.deleteSchedule(scheduleId);
     }
 }

@@ -1,8 +1,11 @@
 spring:
   jpa:
+    hibernate:
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
+
   datasource:
     url: jdbc:mysql://localhost:3306/Schedule
     username: root

@@ -22,7 +22,7 @@ public class CommentController {
      * @return 생성된 코멘트 정보가 담긴 객체
      */
     @PostMapping("/comments")
-    public CommentResponseDto createSchedule(@RequestBody CommentCreateRequestDto commentCreateRequestDto) {
+    public CommentResponseDto createComment(@RequestBody CommentCreateRequestDto commentCreateRequestDto) {
         return commentService.createComment(commentCreateRequestDto);
     }
 

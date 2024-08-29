@@ -13,11 +13,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class Comment extends BaseEntity {
     @Id
-    @Column(name = "comment_id")
+    @Column(name = "comment_id", insertable=false, updatable=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "schedule_id", nullable = false)
     private Schedule schedule;
 
@@ -26,6 +26,7 @@ public class Comment extends BaseEntity {
 
     @Column(name = "user_name", nullable = false, length = 20)
     private String userName;
+
 
     public Comment(CommentCreateRequestDto commentCreateRequestDto, Schedule schedule) {
         this.commentData = commentCreateRequestDto.getCommentData();

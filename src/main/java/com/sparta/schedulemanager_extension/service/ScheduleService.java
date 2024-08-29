@@ -24,7 +24,8 @@ public class ScheduleService {
         this.scheduleRepository = scheduleRepository;
     }
 
-    /**
+    /** 스케쥴을 추가하는 함수
+     *
      * @param scheduleCreateRequestDto RequestBody로 들어온 스케쥴 정보
      * @return 저장된 내용
      */
@@ -35,7 +36,8 @@ public class ScheduleService {
         return new ScheduleResponseDto(saveSchedule);
     }
 
-    /**
+    /** 스케쥴을 조회하는 함수
+     *
      * @param scheduleId 조회하고자 하는 스케쥴 아이디
      * @return 조회된 스케쥴 내용이 담긴 객체
      */
@@ -46,7 +48,8 @@ public class ScheduleService {
         return new ScheduleResponseDto(schedule);
     }
 
-    /**
+    /** 스케쥴들을 페이징하여 조회하는 함수
+     *
      * @param pageIndex 페이징 할 인덱스
      * @param pageSize 페이징 사이즈
      * @return 조회 & 댓글 수까지 추가된 객체
@@ -57,22 +60,11 @@ public class ScheduleService {
                 .map(SchedulePageResponseDto::new)
                 .toList();
 
-        for (SchedulePageResponseDto schedule : schedules) {
-            schedule.setCommentCount(getCommentCount(schedule.getScheduleID()));
-        }
-
         return schedules;
     }
 
-    /**
-     * @param scheduleId 해당 스케쥴에 존재하는 댓글 수를 반환하는 함수
-     * @return 해당 스케쥴에 존재하는 댓글 수
-     */
-    public int getCommentCount(int scheduleId) {
-        return commentRepository.findBySchedule_Id(scheduleId).size();
-    }
-
-    /**
+    /** 스케쥴을 갱신하는 함수
+     *
      * @param scheduleId 변경하고자 하는 스케쥴 아이디
      * @param scheduleBaseRequestDto 변경하고자 하는 내용( 제목, 내용 )
      * @return 업데이트 된 일정 내용
@@ -85,5 +77,15 @@ public class ScheduleService {
 
         Schedule updatedSchedule = scheduleRepository.save(foundSchedule);
         return new ScheduleResponseDto(updatedSchedule);
+    }
+
+    /** 스케쥴을 삭제하는 함수
+     *
+     * @param scheduleId 삭제할 스케쥴 ID
+     * @return 삭제된 스케쥴 ID
+     */
+    public Integer deleteSchedule(Integer scheduleId) {
+        scheduleRepository.deleteById(scheduleId);
+        return scheduleId;
     }
 }

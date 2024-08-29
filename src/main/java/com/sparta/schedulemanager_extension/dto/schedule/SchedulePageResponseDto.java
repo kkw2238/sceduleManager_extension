@@ -14,5 +14,7 @@ public class SchedulePageResponseDto extends ScheduleResponseDto {
 
     public SchedulePageResponseDto(Schedule schedule) {
         super(schedule);
+
+        commentCount = schedule.getComments().size();
     }
 }
