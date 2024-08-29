@@ -4,13 +4,11 @@ import com.sparta.schedulemanager_extension.dto.comment.CommentCreateRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @Table(name = "comment")
-@EntityListeners(AuditingEntityListener.class)
 public class Comment extends BaseEntity {
     @Id
     @Column(name = "comment_id", insertable=false, updatable=false)

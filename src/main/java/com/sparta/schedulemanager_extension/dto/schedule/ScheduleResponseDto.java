@@ -12,7 +12,6 @@ public class ScheduleResponseDto {
     String scheduleData;
     String createDateTime;
     String editDateTime;
-    String managerName;
 
     public ScheduleResponseDto(Schedule schedule) {
         this.scheduleID = schedule.getId();
@@ -20,6 +19,5 @@ public class ScheduleResponseDto {
         this.scheduleData = schedule.getScheduleData();
         this.createDateTime = schedule.getCreateDateTime();
         this.editDateTime = schedule.getEditDateTime();
-        this.managerName = schedule.getManagerName();
     }
 }
