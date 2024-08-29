@@ -1,9 +1,6 @@
 package com.sparta.schedulemanager_extension.controller;
 
-import com.sparta.schedulemanager_extension.dto.schedule.ScheduleBaseRequestDto;
-import com.sparta.schedulemanager_extension.dto.schedule.ScheduleCreateRequestDto;
-import com.sparta.schedulemanager_extension.dto.schedule.SchedulePageResponseDto;
-import com.sparta.schedulemanager_extension.dto.schedule.ScheduleResponseDto;
+import com.sparta.schedulemanager_extension.dto.schedule.*;
 import com.sparta.schedulemanager_extension.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +30,7 @@ public class ScheduleController {
      * @return 조회된 스케쥴 내용이 담긴 객체
      */
     @GetMapping("/schedules/{scheduleId}")
-    public ScheduleResponseDto getSchedule(@PathVariable Integer scheduleId) {
+    public ScheduleSingleCaseResponseDto getSchedule(@PathVariable Integer scheduleId) {
         return scheduleService.getSchedule(scheduleId);
     }
 

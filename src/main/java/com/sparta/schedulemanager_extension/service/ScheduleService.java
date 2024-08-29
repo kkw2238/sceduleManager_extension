@@ -1,9 +1,6 @@
 package com.sparta.schedulemanager_extension.service;
 
-import com.sparta.schedulemanager_extension.dto.schedule.ScheduleBaseRequestDto;
-import com.sparta.schedulemanager_extension.dto.schedule.ScheduleCreateRequestDto;
-import com.sparta.schedulemanager_extension.dto.schedule.SchedulePageResponseDto;
-import com.sparta.schedulemanager_extension.dto.schedule.ScheduleResponseDto;
+import com.sparta.schedulemanager_extension.dto.schedule.*;
 import com.sparta.schedulemanager_extension.entity.Manager;
 import com.sparta.schedulemanager_extension.entity.Schedule;
 import com.sparta.schedulemanager_extension.entity.User;
@@ -62,11 +59,11 @@ public class ScheduleService {
      * @return 조회된 스케쥴 내용이 담긴 객체
      */
     @Transactional
-    public ScheduleResponseDto getSchedule(Integer scheduleId) {
+    public ScheduleSingleCaseResponseDto getSchedule(Integer scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(() ->
                 new RuntimeException("Schedule not found"));
 
-        return new ScheduleResponseDto(schedule);
+        return new ScheduleSingleCaseResponseDto(schedule);
     }
 
     /** 스케쥴들을 페이징하여 조회하는 함수

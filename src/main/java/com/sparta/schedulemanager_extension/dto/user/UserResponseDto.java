@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserResponseDto {
-    private int userId;
-    private String userName;
-    private String email;
+public class UserResponseDto extends UserBaseResponseDto {
+
     private String createDateTime;
     private String editDateTime;
 
